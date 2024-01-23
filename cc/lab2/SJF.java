@@ -28,6 +28,8 @@ public class SJF {
         prc.sort(Comparator.comparingInt(p -> p.bt));
 
         int ct = 0;
+        int totalTat = 0;
+        int totalWt = 0;
 
         for (Process process : prc) {
             if (process.at > ct) {
@@ -38,9 +40,20 @@ public class SJF {
 
             int tat = ct - process.at;
             int wt = tat - process.bt;
+            totalTat += tat;
+            totalWt += wt;
 
-            System.out.println("Process " + process.id + " | Turnaround Time: " + tat + " | Waiting Time: " + wt);
+            System.out.println("Process " + process.id +
+                    " | Turnaround Time: " + tat +
+                    " | Waiting Time: " + wt);
         }
+
+        double avgTat = (double) totalTat / prc.size();
+        double avgWt = (double) totalWt / prc.size();
+
+        System.out.println("\nAverage Turnaround Time: " + avgTat);
+        System.out.println("Average Waiting Time: " + avgWt);
+
         sc.close();
     }
 }

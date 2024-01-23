@@ -17,7 +17,7 @@ public class FCFS {
         Scanner sc = new Scanner(System.in);
         List<Process> prc = new ArrayList<>();
         System.out.println("Enter the number of processes:");
-        ;
+
         int n = sc.nextInt();
         System.out.println("Enter the arrival and burst time:");
         for (int i = 0; i < n; i++) {
@@ -29,6 +29,8 @@ public class FCFS {
         prc.sort(Comparator.comparingInt(p -> p.at));
 
         int ct = 0;
+        int totalTat = 0;
+        int totalWt = 0;
 
         for (Process process : prc) {
 
@@ -40,9 +42,16 @@ public class FCFS {
 
             int tat = ct - process.at;
             int wt = tat - process.bt;
+            totalTat += tat;
+            totalWt += wt;
 
             System.out.println("Process " + process.id + " | Turnaround Time: " + tat + " | Waiting Time: " + wt);
         }
+        double avgTat = (double) totalTat / prc.size();
+        double avgWt = (double) totalWt / prc.size();
+
+        System.out.println("\nAverage Turnaround Time: " + avgTat);
+        System.out.println("Average Waiting Time: " + avgWt);
 
         sc.close();
     }
