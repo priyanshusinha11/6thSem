@@ -1,3 +1,4 @@
+#prime number
 print("Enter the number: ")
 num = int(input())
 flag = 0

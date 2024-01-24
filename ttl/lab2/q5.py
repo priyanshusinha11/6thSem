@@ -1,3 +1,4 @@
+#palindrome
 print("Enter the number:")
 num = int(input())
 temp = num

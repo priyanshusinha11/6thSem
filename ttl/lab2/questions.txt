@@ -18,3 +18,13 @@ other questions:
 6. wap to check a given number is a armstrong number or not using while loop
 
 7. wap to add the sum of digits and count the number of digits in a given number
+
+8. wap to check for perfect number
+
+9. wap to check for strong number
+
+10. wap to print prime numbers between 3-100
+
+11. wap to print armstrong numbers between 100-1000
+
+12. wap tp print palindrome numbers between 10-1000 

@@ -11,3 +11,4 @@ while temp != 0:
     cnt += 1
 print("Sum of the digits of", num,"=",sum)
 print("Number of digits in",num,"=",cnt)
+
