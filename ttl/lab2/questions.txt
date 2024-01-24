@@ -1,0 +1,20 @@
+Lab exp: guess the number game
+
+other questions:
+
+1. wap to  find out the greatest among three numbers
+
+2. wap to find out the grade of a student
+
+3. wap to print the electric bill of a house
+    i. first 100 untis: 2.5 rs per unit
+    ii. next 100 units: 4 rs per unit
+    iii. next 100: 5 rs per unit
+
+4. wap using for loop to check a given number is a prime number or not
+ 
+5. wap to print the reverse of a number and check whether it is a palindrome number or not
+
+6. wap to check a given number is a armstrong number or not using while loop
+
+7. wap to add the sum of digits and count the number of digits in a given number
