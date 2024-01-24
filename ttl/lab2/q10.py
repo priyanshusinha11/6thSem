@@ -1,3 +1,4 @@
+# prime in range
 def isPrime(num):
     flag = 0
     for i in range(2,num):

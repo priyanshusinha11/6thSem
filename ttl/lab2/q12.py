@@ -1,3 +1,4 @@
+# plaindrome in range
 def isPalindrome(num):
     temp = num
     rev = 0

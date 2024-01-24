@@ -1,3 +1,4 @@
+# armstrong in range
 def isArmStrong(num):
     temp = num
     cnt = 0
