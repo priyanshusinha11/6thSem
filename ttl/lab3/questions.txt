@@ -1,0 +1,4 @@
+1. wap to input palindrome or not
+2. to check whether nelson or not using function
+3. wap to input a number and check whether perfect or not using function
+4. prime using function

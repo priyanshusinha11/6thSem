@@ -12,7 +12,6 @@ class Process {
         this.bt = bt;
         this.rt = bt;
     }
-
 }
 
 public class RoundRobin {
@@ -56,18 +55,17 @@ public class RoundRobin {
             if (currentProcess.rt > quantum) {
                 currentTime += quantum;
                 currentProcess.rt -= quantum;
-                // Add the process back to the queue if it hasn't finished
                 queue.add(currentProcess);
             } else {
                 currentTime += currentProcess.rt;
                 currentProcess.rt = 0;
-                // Calculate turnaround time and waiting time for the finished process
+                // Calculate turnaround time and waiting time when a process completes
                 tat[currentProcess.id] = currentTime - currentProcess.at;
                 wt[currentProcess.id] = tat[currentProcess.id] - currentProcess.bt;
                 totalTat += tat[currentProcess.id];
                 totalWt += wt[currentProcess.id];
             }
-            // Check for arrival of new processes
+            // Update arrival times for new processes
             for (Process p : processes) {
                 if (p.at <= currentTime && !queue.contains(p) && p != currentProcess && p.rt > 0) {
                     queue.add(p);
@@ -86,5 +84,4 @@ public class RoundRobin {
         System.out.println("\nAverage Turnaround Time: " + avgTat);
         System.out.println("Average Waiting Time: " + avgWt);
     }
-
 }
