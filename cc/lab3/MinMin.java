@@ -10,9 +10,9 @@ public class MinMin {
 
         int[][] minMin = new int[nM][nT];
         int[][] temp = new int[nM][nT];
-        int makespan = 0;
+        int maxspan = 0;
 
-        System.out.println("Fill data:");
+        System.out.println("Entered the time units for each machines for respective tasks");
         for (int i = 0; i < nM; i++) {
             for (int j = 0; j < nT; j++) {
                 minMin[i][j] = sc.nextInt();
@@ -20,19 +20,19 @@ public class MinMin {
             }
         }
 
-        System.out.println("Original Data:");
+        
         for (int i = 0; i < nM; i++) {
             for (int j = 0; j < nT; j++)
                 System.out.print(minMin[i][j] + " ");
             System.out.println();
         }
 
-        int[] resultTask = new int[nT];
-        int[] resultMachine = new int[nT];
-        int[] resultTime = new int[nT];
-        int ptr = -1;
+        int[] resTask = new int[nT];
+        int[] resMachine = new int[nT];
+        int[] resTime = new int[nT];
+        int ind = -1;
 
-        while (ptr < nT - 1) {
+        while (ind < nT - 1) {
             int[] time = new int[nT];
             int[] machine = new int[nT];
 
@@ -58,20 +58,20 @@ public class MinMin {
                 }
             }
 
-            if (ptr + 1 < nT) {
-                resultTask[++ptr] = pos;
-                resultMachine[ptr] = machine[pos];
-                resultTime[ptr] = temp[machine[pos]][pos];
+            if (ind + 1 < nT) {
+                resTask[++ind] = pos;
+                resMachine[ind] = machine[pos];
+                resTime[ind] = temp[machine[pos]][pos];
 
-                if (minimum > makespan) {
-                    makespan = minimum;
+                if (minimum > maxspan) {
+                    maxspan = minimum;
                 }
 
                 for (int i = 0; i < nM; i++) {
                     for (int j = 0; j < nT; j++) {
-                        if (j == resultTask[ptr])
+                        if (j == resTask[ind])
                             minMin[i][j] = Integer.MAX_VALUE;
-                        else if (i == resultMachine[ptr] && minMin[i][j] != Integer.MAX_VALUE)
+                        else if (i == resMachine[ind] && minMin[i][j] != Integer.MAX_VALUE)
                             minMin[i][j] += minimum;
                     }
                 }
@@ -79,12 +79,12 @@ public class MinMin {
         }
 
         System.out.println("Scheduled Tasks:");
-        for (int i = 0; i <= ptr; i++) {
-            System.out.printf("Task %d Runs on Machine %d with Time %d units\n", resultTask[i] + 1,
-                    resultMachine[i] + 1, resultTime[i]);
+        for (int i = 0; i <= ind; i++) {
+            System.out.printf("Task %d Runs on Machine %d with Time %d units\n", resTask[i] + 1,
+                    resMachine[i] + 1, resTime[i]);
         }
 
-        System.out.println("Max Span: " + makespan + " units");
+        System.out.println("Max Span: " + maxspan + " units");
 
         sc.close();
     }

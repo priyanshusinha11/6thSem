@@ -59,13 +59,11 @@ public class RoundRobin {
             } else {
                 currentTime += currentProcess.rt;
                 currentProcess.rt = 0;
-                // Calculate turnaround time and waiting time when a process completes
                 tat[currentProcess.id] = currentTime - currentProcess.at;
                 wt[currentProcess.id] = tat[currentProcess.id] - currentProcess.bt;
                 totalTat += tat[currentProcess.id];
                 totalWt += wt[currentProcess.id];
             }
-            // Update arrival times for new processes
             for (Process p : processes) {
                 if (p.at <= currentTime && !queue.contains(p) && p != currentProcess && p.rt > 0) {
                     queue.add(p);

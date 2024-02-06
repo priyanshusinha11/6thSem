@@ -4,13 +4,13 @@ class Process {
     int id;
     int at;
     int bt;
-    int remainingTime;
+    int rt;
 
     Process(int id, int at, int bt) {
         this.id = id;
         this.at = at;
         this.bt = bt;
-        this.remainingTime = bt;
+        this.rt = bt;
     }
 }
 
@@ -27,7 +27,7 @@ public class PreemptiveSJF {
             arrivalQueue.add(new Process(i, at, bt));
         }
 
-        PriorityQueue<Process> processQueue = new PriorityQueue<>(Comparator.comparingInt(p -> p.remainingTime));
+        PriorityQueue<Process> processQueue = new PriorityQueue<>(Comparator.comparingInt(p -> p.rt));
         int currentTime = 0;
         int completed = 0;
         int totalTat = 0;
@@ -44,11 +44,11 @@ public class PreemptiveSJF {
             }
 
             Process currentProcess = processQueue.poll();
-            int executionTime = Math.min(currentProcess.remainingTime, 1);
-            currentProcess.remainingTime -= executionTime;
+            int executionTime = Math.min(currentProcess.rt, 1);
+            currentProcess.rt -= executionTime;
             currentTime += executionTime;
 
-            if (currentProcess.remainingTime == 0) {
+            if (currentProcess.rt == 0) {
                 completed++;
                 int tat = currentTime - currentProcess.at;
                 int wt = tat - currentProcess.bt;
