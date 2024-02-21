@@ -40,16 +40,19 @@ public class SJFWithoutSorting {
             }
 
             Process process = processQueue.poll();
-            ct += process.bt;
+            if (process != null) {
+                ct += process.bt;
 
-            int tat = ct - process.at;
-            int wt = tat - process.bt;
-            totalTat += tat;
-            totalWt += wt;
+                int tat = ct - process.at;
+                int wt = tat - process.bt;
+                totalTat += tat;
+                totalWt += wt;
 
-            System.out.println("Process " + process.id +
-                    " | Turnaround Time: " + tat +
-                    " | Waiting Time: " + wt);
+                System.out.println("Process " + process.id +
+                        " | Turnaround Time: " + tat +
+                        " | Waiting Time: " + wt);
+            }
+
         }
 
         double avgTat = (double) totalTat / n;

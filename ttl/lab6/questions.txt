@@ -1,0 +1,3 @@
+1. consider the numerical data set to perform some statistical and mathematical operations like mean, median, mode, standard deviation, eculidaian distance, d4 and d8 distance, manhatton distance etc using numpy library
+
+2. find out the frequency of occurences of a particular data by using boxplot analysis
