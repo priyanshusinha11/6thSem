@@ -1,0 +1,4 @@
+1.create a simple line plot and scatter plot using matplot library (any dataset)
+2.create a bar plot, histo gram, boxplot and heatmap using seaborn library
+3.perform basic mathematical operations such as integeration, diffrentiation and optimisation using scipy and also solve linear algebra problems using scipy function 
+
