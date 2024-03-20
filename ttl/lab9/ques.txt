@@ -1,0 +1,2 @@
+1.understand and apply keras/tensor flow api to train a neural network
+aim of the exp: create a basic neural network  using tensor flow including defining the layers and compiling the model. train the neural network on a dataset and evaluate it's performance. learn how to save and load, train model for future use. 
