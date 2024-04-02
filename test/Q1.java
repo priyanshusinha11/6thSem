@@ -15,41 +15,48 @@ class Process {
 public class Q1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Process> prc = new ArrayList<>();
+        Queue<Process> arrivalQueue = new LinkedList<>();
         System.out.println("Enter the number of processes:");
         int n = sc.nextInt();
         System.out.println("Enter the arrival and burst time:");
         for (int i = 0; i < n; i++) {
             int at = sc.nextInt();
             int bt = sc.nextInt();
-            prc.add(new Process(i, at, bt));
+            arrivalQueue.add(new Process(i, at, bt));
         }
 
-        prc.sort(Comparator.comparingInt(p -> p.bt));
+        PriorityQueue<Process> processQueue = new PriorityQueue<>(Comparator.comparingInt(p -> p.bt));
 
         int ct = 0;
         int totalTat = 0;
         int totalWt = 0;
 
-        for (Process process : prc) {
-            if (process.at > ct) {
-                ct = process.at;
+        while (!arrivalQueue.isEmpty() || !processQueue.isEmpty()) {
+            while (!arrivalQueue.isEmpty() && arrivalQueue.peek().at <= ct) {
+                processQueue.add(arrivalQueue.poll());
+            }
+            if (processQueue.isEmpty()) {
+                ct = arrivalQueue.peek().at;
             }
 
-            ct += process.bt;
+            Process process = processQueue.poll();
+            if (process != null) {
+                ct += process.bt;
 
-            int tat = ct - process.at;
-            int wt = tat - process.bt;
-            totalTat += tat;
-            totalWt += wt;
+                int tat = ct - process.at;
+                int wt = tat - process.bt;
+                totalTat += tat;
+                totalWt += wt;
 
-            System.out.println("Process " + process.id +
-                    " | Turnaround Time: " + tat +
-                    " | Waiting Time: " + wt);
+                System.out.println("Process " + process.id +
+                        " | Turnaround Time: " + tat +
+                        " | Waiting Time: " + wt);
+            }
+
         }
 
-        double avgTat = (double) totalTat / prc.size();
-        double avgWt = (double) totalWt / prc.size();
+        double avgTat = (double) totalTat / n;
+        double avgWt = (double) totalWt / n;
 
         System.out.println("\nAverage Turnaround Time: " + avgTat);
         System.out.println("Average Waiting Time: " + avgWt);
